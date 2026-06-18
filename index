@@ -1,0 +1,2469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maison Élite | Luxury Designer Catalog</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --black: #050505;
+      --soft-black: #111111;
+      --charcoal: #1c1b1a;
+      --ivory: #f7f2e9;
+      --pearl: #fffaf1;
+      --champagne: #d8c3a5;
+      --gold: #b89b5e;
+      --bronze: #8a6a3f;
+      --taupe: #9c8f7d;
+      --beige: #e7dccb;
+      --muted: #b7ab98;
+      --line: rgba(216, 195, 165, 0.28);
+      --glass: rgba(255, 250, 241, 0.08);
+      --shadow: 0 28px 80px rgba(0, 0, 0, 0.35);
+      --transition: all 0.35s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      color: var(--ivory);
+      background:
+        radial-gradient(circle at top left, rgba(184, 155, 94, 0.16), transparent 32%),
+        linear-gradient(135deg, #050505 0%, #11100f 42%, #1a1713 100%);
+      overflow-x: hidden;
+    }
+
+    body.no-scroll {
+      overflow: hidden;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    select {
+      font-family: inherit;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    .announcement {
+      background: var(--black);
+      color: var(--champagne);
+      text-align: center;
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      padding: 11px 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: rgba(5, 5, 5, 0.78);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .logo {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 31px;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      color: var(--pearl);
+      white-space: nowrap;
+    }
+
+    .logo span {
+      color: var(--gold);
+      font-style: italic;
+      font-weight: 500;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--muted);
+    }
+
+    .nav-links a {
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .nav-links a:hover {
+      color: var(--champagne);
+    }
+
+    .shop-dropdown {
+      position: relative;
+    }
+
+    .shop-dropdown-btn {
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      transition: var(--transition);
+    }
+
+    .shop-dropdown-btn:hover {
+      color: var(--champagne);
+    }
+
+    .mega-menu {
+      position: fixed;
+      left: 50%;
+      top: 116px;
+      transform: translateX(-50%) translateY(14px);
+      width: min(1180px, calc(100% - 36px));
+      background: rgba(8, 8, 8, 0.96);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(24px);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: var(--transition);
+      z-index: 80;
+    }
+
+    .mega-menu.open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .mega-menu-inner {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr) 1.3fr;
+      gap: 28px;
+      padding: 34px;
+    }
+
+    .mega-column {
+      border-right: 1px solid var(--line);
+      padding-right: 22px;
+    }
+
+    .mega-column button {
+      border: 0;
+      background: transparent;
+      color: var(--pearl);
+      font-family: "Cormorant Garamond", serif;
+      font-size: 28px;
+      cursor: pointer;
+      margin-bottom: 14px;
+      transition: var(--transition);
+      text-align: left;
+    }
+
+    .mega-column button:hover {
+      color: var(--champagne);
+      transform: translateX(4px);
+    }
+
+    .mega-column a {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      margin-bottom: 11px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .mega-column a:hover {
+      color: var(--gold);
+      transform: translateX(4px);
+    }
+
+    .mega-feature {
+      background:
+        linear-gradient(rgba(5, 5, 5, 0.62), rgba(5, 5, 5, 0.88)),
+        url("https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=85");
+      background-size: cover;
+      background-position: center;
+      border: 1px solid var(--line);
+      padding: 28px;
+      display: grid;
+      align-content: end;
+      min-height: 260px;
+    }
+
+    .mega-feature span {
+      color: var(--gold);
+      font-size: 10px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .mega-feature h3 {
+      font-family: "Cormorant Garamond", serif;
+      color: var(--pearl);
+      font-size: 36px;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .mega-feature p {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    .mega-feature button {
+      width: fit-content;
+      border: 1px solid var(--champagne);
+      background: var(--champagne);
+      color: var(--black);
+      padding: 12px 18px;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 1.6px;
+      font-size: 10px;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .icon-btn {
+      height: 42px;
+      min-width: 42px;
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 241, 0.04);
+      color: var(--ivory);
+      border-radius: 999px;
+      cursor: pointer;
+      transition: var(--transition);
+      padding: 0 15px;
+      font-size: 12px;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+    }
+
+    .icon-btn:hover {
+      border-color: var(--gold);
+      background: rgba(184, 155, 94, 0.12);
+      transform: translateY(-2px);
+    }
+
+    .cart-count {
+      color: var(--gold);
+      font-weight: 700;
+      margin-left: 4px;
+    }
+
+    .mobile-menu {
+      display: none;
+    }
+
+    .hero {
+      min-height: calc(100vh - 116px);
+      display: grid;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(5, 5, 5, 0.96) 0%, rgba(5, 5, 5, 0.68) 42%, rgba(5, 5, 5, 0.24) 100%),
+        url("https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1800&q=85");
+      background-size: cover;
+      background-position: center;
+      transform: scale(1.03);
+      animation: slowZoom 14s ease-in-out infinite alternate;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: linear-gradient(to bottom, black, transparent 85%);
+      pointer-events: none;
+    }
+
+    @keyframes slowZoom {
+      from { transform: scale(1.03); }
+      to { transform: scale(1.08); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 720px;
+      padding: 92px 0;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 12px;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(54px, 8vw, 108px);
+      line-height: 0.88;
+      letter-spacing: -2px;
+      color: var(--pearl);
+      margin-bottom: 28px;
+    }
+
+    .hero h1 em {
+      color: var(--champagne);
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .hero p {
+      max-width: 570px;
+      font-size: 17px;
+      line-height: 1.9;
+      color: #d8d0c3;
+      margin-bottom: 36px;
+      font-weight: 300;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn {
+      border: 1px solid transparent;
+      padding: 15px 28px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: var(--transition);
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 50px;
+    }
+
+    .btn-primary {
+      color: var(--black);
+      background: linear-gradient(135deg, var(--champagne), var(--gold));
+      box-shadow: 0 14px 42px rgba(184, 155, 94, 0.24);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 58px rgba(184, 155, 94, 0.35);
+    }
+
+    .btn-secondary {
+      color: var(--ivory);
+      background: rgba(255, 250, 241, 0.05);
+      border-color: var(--line);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--champagne);
+      background: rgba(255, 250, 241, 0.1);
+      transform: translateY(-3px);
+    }
+
+    .hero-badge {
+      position: absolute;
+      z-index: 3;
+      right: 7vw;
+      bottom: 70px;
+      width: 180px;
+      height: 180px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: var(--champagne);
+      background: rgba(5, 5, 5, 0.45);
+      backdrop-filter: blur(10px);
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .hero-badge div {
+      text-align: center;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 22px;
+      line-height: 1.2;
+    }
+
+    .hero-badge small {
+      display: block;
+      font-family: "Inter", sans-serif;
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    .section {
+      padding: 104px 0;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 32px;
+      margin-bottom: 44px;
+    }
+
+    .section-kicker {
+      color: var(--gold);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 3.5px;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(38px, 5vw, 66px);
+      font-weight: 600;
+      line-height: 0.95;
+      color: var(--pearl);
+    }
+
+    .section-copy {
+      max-width: 465px;
+      color: var(--muted);
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    .brand-strip {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 250, 241, 0.025);
+      overflow: hidden;
+    }
+
+    .brand-track {
+      display: flex;
+      gap: 56px;
+      padding: 24px 0;
+      animation: marquee 26s linear infinite;
+      width: max-content;
+    }
+
+    .brand-track span {
+      color: rgba(247, 242, 233, 0.62);
+      font-family: "Cormorant Garamond", serif;
+      font-size: 24px;
+      letter-spacing: 2px;
+      white-space: nowrap;
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .category-card {
+      min-height: 330px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: var(--soft-black);
+      cursor: pointer;
+      isolation: isolate;
+    }
+
+    .category-card img {
+      height: 100%;
+      position: absolute;
+      inset: 0;
+      opacity: 0.72;
+      transition: transform 0.9s ease, opacity 0.35s ease;
+    }
+
+    .category-card:hover img {
+      transform: scale(1.08);
+      opacity: 0.55;
+    }
+
+    .category-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(5,5,5,0.95), transparent 60%);
+      z-index: 1;
+    }
+
+    .category-info {
+      position: absolute;
+      z-index: 2;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+    }
+
+    .category-info h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 34px;
+      margin-bottom: 7px;
+      color: var(--pearl);
+    }
+
+    .category-info p {
+      color: var(--champagne);
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .featured {
+      background:
+        linear-gradient(rgba(5,5,5,0.74), rgba(5,5,5,0.88)),
+        url("https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1800&q=85");
+      background-size: cover;
+      background-position: center;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .featured-layout {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .featured-panel {
+      border: 1px solid var(--line);
+      background: rgba(5, 5, 5, 0.62);
+      backdrop-filter: blur(18px);
+      padding: clamp(34px, 5vw, 68px);
+      box-shadow: var(--shadow);
+    }
+
+    .featured-panel h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(42px, 6vw, 76px);
+      line-height: 0.96;
+      margin-bottom: 24px;
+    }
+
+    .featured-panel p {
+      color: #d8d0c3;
+      line-height: 1.85;
+      margin-bottom: 32px;
+      font-weight: 300;
+    }
+
+    .featured-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 32px;
+    }
+
+    .stat {
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
+    }
+
+    .stat strong {
+      display: block;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 36px;
+      color: var(--champagne);
+    }
+
+    .stat span {
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .featured-image {
+      height: 610px;
+      border: 1px solid var(--line);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .featured-image img {
+      height: 100%;
+      transition: transform 1s ease;
+    }
+
+    .featured-image:hover img {
+      transform: scale(1.05);
+    }
+
+    .catalog-view {
+      display: none;
+      border-top: 1px solid var(--line);
+      background:
+        radial-gradient(circle at top right, rgba(184, 155, 94, 0.12), transparent 34%),
+        linear-gradient(135deg, #050505 0%, #11100f 100%);
+    }
+
+    .catalog-view.active {
+      display: block;
+    }
+
+    .catalog-clean-header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 28px;
+      margin-bottom: 22px;
+    }
+
+    .catalog-intro {
+      max-width: 650px;
+      color: var(--muted);
+      line-height: 1.8;
+      font-weight: 300;
+      margin-bottom: 28px;
+    }
+
+    .catalog-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .catalog-actions select {
+      height: 50px;
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 241, 0.045);
+      color: var(--ivory);
+      padding: 0 14px;
+      outline: none;
+    }
+
+    .catalog-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 34px;
+    }
+
+    .catalog-chips button {
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 241, 0.04);
+      color: var(--muted);
+      padding: 11px 15px;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-size: 10px;
+      transition: var(--transition);
+    }
+
+    .catalog-chips button:hover,
+    .catalog-chips button.active {
+      color: var(--black);
+      background: var(--champagne);
+      border-color: var(--champagne);
+    }
+
+    .catalog-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 22px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 18px;
+    }
+
+    .catalog-top.clean {
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
+    }
+
+    .catalog-top p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .product-card {
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 241, 0.035);
+      overflow: hidden;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(216, 195, 165, 0.58);
+      box-shadow: 0 22px 70px rgba(0, 0, 0, 0.28);
+    }
+
+    .product-image {
+      height: 355px;
+      overflow: hidden;
+      background: var(--charcoal);
+      position: relative;
+    }
+
+    .product-image img {
+      height: 100%;
+      transition: transform 0.9s ease;
+    }
+
+    .product-card:hover .product-image img {
+      transform: scale(1.08);
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(5, 5, 5, 0.72);
+      border: 1px solid var(--line);
+      color: var(--champagne);
+      backdrop-filter: blur(10px);
+      padding: 8px 10px;
+      font-size: 9px;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+    }
+
+    .quick-btn {
+      position: absolute;
+      left: 14px;
+      right: 14px;
+      bottom: 14px;
+      height: 44px;
+      border: 1px solid rgba(247, 242, 233, 0.38);
+      background: rgba(5, 5, 5, 0.68);
+      color: var(--ivory);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 11px;
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: var(--transition);
+      backdrop-filter: blur(10px);
+    }
+
+    .product-card:hover .quick-btn {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .product-info {
+      padding: 20px;
+    }
+
+    .product-brand {
+      color: var(--gold);
+      font-size: 10px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .product-name {
+      font-family: "Cormorant Garamond", serif;
+      color: var(--pearl);
+      font-size: 25px;
+      line-height: 1.05;
+      margin-bottom: 10px;
+    }
+
+    .product-meta {
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 13px;
+      margin-bottom: 16px;
+      min-height: 42px;
+    }
+
+    .product-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .price {
+      color: var(--champagne);
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .add-btn {
+      height: 39px;
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 241, 0.055);
+      color: var(--ivory);
+      padding: 0 13px;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      font-size: 10px;
+      transition: var(--transition);
+    }
+
+    .add-btn:hover {
+      color: var(--black);
+      background: var(--champagne);
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .trust-card {
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 241, 0.04);
+      padding: 28px;
+      min-height: 230px;
+      transition: var(--transition);
+    }
+
+    .trust-card:hover {
+      background: rgba(184, 155, 94, 0.08);
+      transform: translateY(-6px);
+    }
+
+    .trust-card .symbol {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 44px;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+
+    .trust-card h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+
+    .trust-card p {
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 14px;
+      font-weight: 300;
+    }
+
+    .editorial {
+      background: var(--pearl);
+      color: var(--black);
+    }
+
+    .editorial .section-kicker {
+      color: var(--bronze);
+    }
+
+    .editorial .section-title {
+      color: var(--black);
+    }
+
+    .editorial .section-copy {
+      color: #6f665a;
+    }
+
+    .editorial-layout {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .editorial-main {
+      min-height: 570px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .editorial-main img {
+      height: 100%;
+    }
+
+    .editorial-caption {
+      position: absolute;
+      left: 28px;
+      right: 28px;
+      bottom: 28px;
+      background: rgba(255, 250, 241, 0.82);
+      backdrop-filter: blur(16px);
+      padding: 28px;
+      border: 1px solid rgba(5, 5, 5, 0.14);
+    }
+
+    .editorial-caption h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 42px;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .editorial-caption p {
+      color: #5b5248;
+      line-height: 1.8;
+    }
+
+    .editorial-side {
+      display: grid;
+      gap: 28px;
+    }
+
+    .mini-story {
+      border: 1px solid rgba(5, 5, 5, 0.14);
+      padding: 32px;
+      display: grid;
+      align-content: center;
+      background: #f2eadc;
+    }
+
+    .mini-story h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 38px;
+      margin-bottom: 14px;
+    }
+
+    .mini-story p {
+      color: #5b5248;
+      line-height: 1.8;
+    }
+
+    .mini-image {
+      min-height: 260px;
+      overflow: hidden;
+    }
+
+    .mini-image img {
+      height: 100%;
+    }
+
+    .footer {
+      background: #030303;
+      border-top: 1px solid var(--line);
+      padding: 76px 0 28px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr repeat(3, 1fr);
+      gap: 34px;
+      margin-bottom: 54px;
+    }
+
+    .footer h3,
+    .footer h4 {
+      font-family: "Cormorant Garamond", serif;
+      color: var(--pearl);
+      margin-bottom: 18px;
+    }
+
+    .footer h3 {
+      font-size: 38px;
+    }
+
+    .footer h4 {
+      font-size: 24px;
+    }
+
+    .footer p,
+    .footer a {
+      color: var(--muted);
+      line-height: 1.9;
+      font-size: 14px;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .newsletter {
+      display: flex;
+      margin-top: 22px;
+      border: 1px solid var(--line);
+      max-width: 430px;
+    }
+
+    .newsletter input {
+      flex: 1;
+      height: 50px;
+      border: 0;
+      outline: 0;
+      background: rgba(255, 250, 241, 0.05);
+      color: var(--ivory);
+      padding: 0 15px;
+    }
+
+    .newsletter button {
+      width: 138px;
+      border: 0;
+      background: var(--champagne);
+      color: var(--black);
+      text-transform: uppercase;
+      letter-spacing: 1.7px;
+      font-size: 11px;
+      cursor: pointer;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--line);
+      padding-top: 22px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      color: rgba(247, 242, 233, 0.48);
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .modal,
+    .cart-drawer {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+    }
+
+    .modal.active,
+    .cart-drawer.active {
+      display: block;
+    }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.72);
+      backdrop-filter: blur(8px);
+    }
+
+    .modal-content {
+      position: relative;
+      width: min(1060px, calc(100% - 28px));
+      max-height: calc(100vh - 42px);
+      overflow-y: auto;
+      margin: 21px auto;
+      background: #0c0b0a;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .modal-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .modal-image {
+      min-height: 710px;
+      background: var(--charcoal);
+    }
+
+    .modal-image img {
+      height: 100%;
+    }
+
+    .modal-details {
+      padding: clamp(28px, 5vw, 58px);
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      z-index: 5;
+      height: 42px;
+      width: 42px;
+      border: 1px solid var(--line);
+      background: rgba(5, 5, 5, 0.68);
+      color: var(--ivory);
+      cursor: pointer;
+      border-radius: 50%;
+      font-size: 18px;
+    }
+
+    .modal-details h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(42px, 5vw, 68px);
+      line-height: 0.95;
+      margin-bottom: 18px;
+    }
+
+    .modal-price {
+      color: var(--champagne);
+      font-size: 21px;
+      margin-bottom: 24px;
+      font-weight: 600;
+    }
+
+    .modal-description {
+      color: #d8d0c3;
+      line-height: 1.85;
+      margin-bottom: 28px;
+      font-weight: 300;
+    }
+
+    .detail-list {
+      display: grid;
+      gap: 13px;
+      margin-bottom: 28px;
+    }
+
+    .detail-list div {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 12px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .detail-list strong {
+      color: var(--champagne);
+      font-weight: 500;
+    }
+
+    .size-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin: 12px 0 28px;
+    }
+
+    .size-options button {
+      min-width: 48px;
+      height: 42px;
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 241, 0.045);
+      color: var(--ivory);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .size-options button:hover,
+    .size-options button.active {
+      background: var(--champagne);
+      color: var(--black);
+    }
+
+    .related {
+      margin-top: 34px;
+    }
+
+    .related h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 31px;
+      margin-bottom: 16px;
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .related-item {
+      border: 1px solid var(--line);
+      padding: 13px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .related-item:hover {
+      background: rgba(184, 155, 94, 0.08);
+    }
+
+    .related-item small {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-size: 9px;
+    }
+
+    .related-item p {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 21px;
+      margin-top: 5px;
+      color: var(--pearl);
+    }
+
+    .drawer-panel {
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100%;
+      width: min(430px, 100%);
+      background: #0b0a09;
+      border-left: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      padding: 28px;
+      overflow-y: auto;
+    }
+
+    .drawer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .drawer-header h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 34px;
+    }
+
+    .cart-items {
+      display: grid;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .cart-item {
+      display: grid;
+      grid-template-columns: 76px 1fr auto;
+      gap: 13px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 14px;
+      align-items: center;
+    }
+
+    .cart-item img {
+      height: 88px;
+      border: 1px solid var(--line);
+    }
+
+    .cart-item h4 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 22px;
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+
+    .cart-item p {
+      color: var(--champagne);
+      font-size: 13px;
+    }
+
+    .remove-cart {
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .cart-total {
+      border-top: 1px solid var(--line);
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 18px;
+      color: var(--champagne);
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .empty-state {
+      border: 1px solid var(--line);
+      padding: 36px;
+      text-align: center;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 28px;
+      transform: translateX(-50%) translateY(20px);
+      z-index: 200;
+      background: rgba(5, 5, 5, 0.82);
+      color: var(--champagne);
+      border: 1px solid var(--line);
+      backdrop-filter: blur(14px);
+      padding: 14px 18px;
+      opacity: 0;
+      pointer-events: none;
+      transition: var(--transition);
+      font-size: 13px;
+      letter-spacing: 1px;
+    }
+
+    .toast.active {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    @media (max-width: 1040px) {
+      .nav-links {
+        display: none;
+      }
+
+      .mobile-menu {
+        display: inline-flex;
+      }
+
+      .mega-menu {
+        display: none;
+      }
+
+      .category-grid,
+      .trust-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .featured-layout,
+      .editorial-layout,
+      .modal-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .catalog-clean-header {
+        display: block;
+      }
+
+      .catalog-actions {
+        margin-top: 22px;
+        flex-wrap: wrap;
+      }
+
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .modal-image {
+        min-height: 480px;
+      }
+
+      .hero-badge {
+        display: none;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .nav {
+        height: 70px;
+      }
+
+      .logo {
+        font-size: 25px;
+      }
+
+      .icon-btn {
+        min-width: 38px;
+        height: 38px;
+        padding: 0 11px;
+      }
+
+      .hide-mobile {
+        display: none;
+      }
+
+      .hero {
+        min-height: 760px;
+      }
+
+      .hero-content {
+        padding: 72px 0;
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+
+      .section {
+        padding: 72px 0;
+      }
+
+      .section-header {
+        display: block;
+      }
+
+      .section-copy {
+        margin-top: 16px;
+      }
+
+      .category-grid,
+      .product-grid,
+      .trust-grid,
+      .footer-grid,
+      .featured-stats,
+      .related-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .category-card {
+        min-height: 270px;
+      }
+
+      .featured-image {
+        height: 440px;
+      }
+
+      .catalog-actions {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .catalog-actions select {
+        width: 100%;
+      }
+
+      .catalog-top {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .product-image {
+        height: 390px;
+      }
+
+      .footer-bottom {
+        display: block;
+      }
+
+      .newsletter {
+        display: block;
+      }
+
+      .newsletter input,
+      .newsletter button {
+        width: 100%;
+      }
+
+      .drawer-panel {
+        padding: 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="announcement">
+    Independent curated luxury catalog — secure checkout, premium packaging, refined selection
+  </div>
+
+  <header class="header">
+    <div class="container nav">
+      <a href="#" class="logo">Maison <span>Élite</span></a>
+
+      <nav class="nav-links">
+        <div class="shop-dropdown">
+          <button class="shop-dropdown-btn" type="button">Shop Catalog</button>
+
+          <div class="mega-menu">
+            <div class="mega-menu-inner">
+              <div class="mega-column">
+                <button onclick="setCatalog('Handbags')">Handbags</button>
+                <a onclick="setCatalog('Handbags', 'Chanel')">Chanel</a>
+                <a onclick="setCatalog('Handbags', 'Louis Vuitton')">Louis Vuitton</a>
+              </div>
+
+              <div class="mega-column">
+                <button onclick="setCatalog('Wallets')">Wallets</button>
+                <a onclick="setCatalog('Wallets', 'Gucci')">Gucci</a>
+                <a onclick="setCatalog('Wallets', 'Chanel')">Chanel</a>
+              </div>
+
+              <div class="mega-column">
+                <button onclick="setCatalog('Sunglasses')">Sunglasses</button>
+                <a onclick="setCatalog('Sunglasses', 'Saint Laurent')">Saint Laurent</a>
+              </div>
+
+              <div class="mega-column">
+                <button onclick="setCatalog('Shoes')">Shoes</button>
+                <a onclick="setCatalog('Shoes', 'Prada')">Prada</a>
+                <a onclick="setCatalog('Shoes', 'Balenciaga')">Balenciaga</a>
+              </div>
+
+              <div class="mega-column">
+                <button onclick="setCatalog('Sandals')">Sandals</button>
+                <a onclick="setCatalog('Sandals', 'Prada')">Prada</a>
+              </div>
+
+              <div class="mega-column">
+                <button onclick="setCatalog('Ready to Wear')">Ready to Wear</button>
+                <a onclick="setCatalog('Ready to Wear', 'Dior')">Dior</a>
+              </div>
+
+              <div class="mega-column">
+                <button onclick="setCatalog('Accessories')">Accessories</button>
+                <a onclick="setCatalog('Accessories', 'Gucci')">Gucci</a>
+                <a onclick="setCatalog('Accessories', 'Dior')">Dior</a>
+                <a onclick="setCatalog('Accessories', 'Louis Vuitton')">Louis Vuitton</a>
+              </div>
+
+              <div class="mega-feature">
+                <span>Private Selection</span>
+                <h3>Shop the full luxury catalog.</h3>
+                <p>Explore every available piece in one refined view.</p>
+                <button onclick="setCatalog()">View All Pieces</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <a href="#collections">Collections</a>
+        <a href="#new">Exclusive Drops</a>
+        <a href="#editorial">Editorial</a>
+        <a href="#trust">Trust</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="icon-btn hide-mobile" onclick="setCatalog()">Shop</button>
+        <button class="icon-btn" onclick="openCart()">Bag <span class="cart-count" id="cartCount">0</span></button>
+        <button class="icon-btn mobile-menu" onclick="setCatalog()">Shop</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-content">
+        <div class="eyebrow">Private Luxury Catalog</div>
+        <h1>Dress like the moment already <em>belongs to you.</em></h1>
+        <p>
+          Discover a refined world of designer fashion, iconic accessories, elegant silhouettes,
+          and emotionally irresistible pieces curated for people who want more than products —
+          they want presence, confidence, and desire.
+        </p>
+
+        <div class="hero-actions">
+          <button class="btn btn-primary" onclick="setCatalog()">Enter The Collection</button>
+          <a class="btn btn-secondary" href="#editorial">Explore The Mood</a>
+        </div>
+      </div>
+
+      <div class="hero-badge">
+        <div>
+          Curated<br>Luxury
+          <small>Exclusive feeling</small>
+        </div>
+      </div>
+    </section>
+
+    <div class="brand-strip">
+      <div class="brand-track">
+        <span>Louis Vuitton</span>
+        <span>Gucci</span>
+        <span>Prada</span>
+        <span>Chanel</span>
+        <span>Dior</span>
+        <span>Saint Laurent</span>
+        <span>Balenciaga</span>
+        <span>Maison Margiela</span>
+        <span>Louis Vuitton</span>
+        <span>Gucci</span>
+        <span>Prada</span>
+        <span>Chanel</span>
+        <span>Dior</span>
+        <span>Saint Laurent</span>
+        <span>Balenciaga</span>
+        <span>Maison Margiela</span>
+      </div>
+    </div>
+
+    <section class="section" id="collections">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">Shop by desire</div>
+            <h2 class="section-title">Luxury categories designed to seduce.</h2>
+          </div>
+          <p class="section-copy">
+            From sculptural handbags to statement sunglasses, every category is presented like a private boutique room.
+          </p>
+        </div>
+
+        <div class="category-grid">
+          <article class="category-card" onclick="setCatalog('Handbags')">
+            <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=900&q=85" alt="Luxury handbags">
+            <div class="category-info">
+              <h3>Handbags</h3>
+              <p>Iconic shapes</p>
+            </div>
+          </article>
+
+          <article class="category-card" onclick="setCatalog('Sunglasses')">
+            <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=900&q=85" alt="Designer sunglasses">
+            <div class="category-info">
+              <h3>Sunglasses</h3>
+              <p>Celebrity energy</p>
+            </div>
+          </article>
+
+          <article class="category-card" onclick="setCatalog('Shoes')">
+            <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=900&q=85" alt="Designer shoes">
+            <div class="category-info">
+              <h3>Shoes</h3>
+              <p>Polished steps</p>
+            </div>
+          </article>
+
+          <article class="category-card" onclick="setCatalog('Ready to Wear')">
+            <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=900&q=85" alt="Luxury clothing">
+            <div class="category-info">
+              <h3>Ready to Wear</h3>
+              <p>Editorial elegance</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section featured" id="new">
+      <div class="container featured-layout">
+        <div class="featured-panel">
+          <div class="section-kicker">Exclusive Drops</div>
+          <h2>The pieces that make people look twice.</h2>
+          <p>
+            A premium shopping experience built around emotion, confidence, and the desire to own something that feels rare.
+            Each drop is styled to feel selective, aspirational, and worthy of the most polished wardrobe.
+          </p>
+          <button class="btn btn-primary" onclick="setCatalog()">View New Arrivals</button>
+
+          <div class="featured-stats">
+            <div class="stat">
+              <strong>24h</strong>
+              <span>Drop energy</span>
+            </div>
+            <div class="stat">
+              <strong>100%</strong>
+              <span>Curated style</span>
+            </div>
+            <div class="stat">
+              <strong>VIP</strong>
+              <span>Boutique mood</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="featured-image">
+          <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1100&q=85" alt="Luxury fashion editorial">
+        </div>
+      </div>
+    </section>
+
+    <section class="section catalog-view" id="catalog">
+      <div class="container">
+        <div class="catalog-clean-header">
+          <div>
+            <div class="section-kicker" id="catalogBreadcrumb">Private Catalog</div>
+            <h2 class="section-title" id="catalogTitle">The Full Luxury Catalog</h2>
+          </div>
+
+          <div class="catalog-actions">
+            <button class="btn btn-secondary" onclick="hideCatalog()">Back to Home</button>
+
+            <select id="sortFilter" onchange="renderProducts()">
+              <option value="featured">Sort: Featured</option>
+              <option value="low">Price: Low to High</option>
+              <option value="high">Price: High to Low</option>
+              <option value="new">Newest First</option>
+            </select>
+          </div>
+        </div>
+
+        <p class="catalog-intro">
+          A simplified boutique view. No heavy searching, no complicated filtering — just refined browsing,
+          premium product discovery, and a smooth path from desire to checkout.
+        </p>
+
+        <div class="catalog-chips" id="catalogChips">
+          <button onclick="setCatalog()">All Pieces</button>
+          <button onclick="setCatalog('Handbags')">Handbags</button>
+          <button onclick="setCatalog('Wallets')">Wallets</button>
+          <button onclick="setCatalog('Sunglasses')">Sunglasses</button>
+          <button onclick="setCatalog('Shoes')">Shoes</button>
+          <button onclick="setCatalog('Sandals')">Sandals</button>
+          <button onclick="setCatalog('Ready to Wear')">Ready to Wear</button>
+          <button onclick="setCatalog('Accessories')">Accessories</button>
+        </div>
+
+        <div class="catalog-top clean">
+          <p id="productCount">Showing curated pieces</p>
+        </div>
+
+        <div class="product-grid" id="productGrid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="trust">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">Luxury trust</div>
+            <h2 class="section-title">A boutique experience built for confidence.</h2>
+          </div>
+          <p class="section-copy">
+            The shopping journey should feel secure, polished, and premium from discovery to delivery.
+          </p>
+        </div>
+
+        <div class="trust-grid">
+          <article class="trust-card">
+            <div class="symbol">01</div>
+            <h3>Authenticity Focus</h3>
+            <p>Designed to communicate quality, transparency, and confidence with every product page and trust note.</p>
+          </article>
+
+          <article class="trust-card">
+            <div class="symbol">02</div>
+            <h3>Secure Checkout</h3>
+            <p>Checkout messaging reinforces privacy, encrypted payment flow, and a polished luxury shopping standard.</p>
+          </article>
+
+          <article class="trust-card">
+            <div class="symbol">03</div>
+            <h3>Premium Packaging</h3>
+            <p>Every purchase should feel like receiving a gift from an exclusive private fashion house.</p>
+          </article>
+
+          <article class="trust-card">
+            <div class="symbol">04</div>
+            <h3>Curated Selection</h3>
+            <p>The catalog is styled to feel intentional, exclusive, and emotionally connected to identity and status.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section editorial" id="editorial">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">Editorial lifestyle</div>
+            <h2 class="section-title">Not just shopping. A private world of style.</h2>
+          </div>
+          <p class="section-copy">
+            Luxury buyers do not only buy objects. They buy emotion, confidence, identity, and the feeling of being seen.
+          </p>
+        </div>
+
+        <div class="editorial-layout">
+          <article class="editorial-main">
+            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=85" alt="Luxury editorial lifestyle">
+            <div class="editorial-caption">
+              <h3>The feeling of arrival.</h3>
+              <p>
+                A visual language built around quiet power, famous-person energy, elegant restraint,
+                and the satisfaction of owning something that feels emotionally expensive.
+              </p>
+            </div>
+          </article>
+
+          <div class="editorial-side">
+            <article class="mini-story">
+              <h3>Designed for desire.</h3>
+              <p>
+                Minimal color, generous spacing, refined typography, soft motion, and polished product presentation
+                create a boutique atmosphere before the customer ever clicks “Add to Bag.”
+              </p>
+            </article>
+
+            <article class="mini-image">
+              <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=85" alt="Premium shopping mood">
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <h3>Maison Élite</h3>
+        <p>
+          An independent luxury-inspired catalog for designer fashion lovers who want elegance,
+          status, confidence, and a refined shopping experience.
+        </p>
+
+        <form class="newsletter" onsubmit="subscribe(event)">
+          <input type="email" placeholder="Enter your email for private drops" required />
+          <button type="submit">Join</button>
+        </form>
+      </div>
+
+      <div>
+        <h4>Shop</h4>
+        <a onclick="setCatalog('Handbags')">Handbags</a>
+        <a onclick="setCatalog('Wallets')">Wallets</a>
+        <a onclick="setCatalog('Sunglasses')">Sunglasses</a>
+        <a onclick="setCatalog('Shoes')">Shoes</a>
+        <a onclick="setCatalog('Ready to Wear')">Ready to Wear</a>
+      </div>
+
+      <div>
+        <h4>Support</h4>
+        <a href="#">Shipping</a>
+        <a href="#">Returns</a>
+        <a href="#">Authentication</a>
+        <a href="#">Secure Checkout</a>
+        <a href="#">Contact Concierge</a>
+      </div>
+
+      <div>
+        <h4>Social</h4>
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+        <a href="#">Pinterest</a>
+        <a href="#">Editorial Journal</a>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>© 2026 Maison Élite. All rights reserved.</p>
+      <p>
+        Independent boutique concept. Designer names may be used for catalog identification only.
+        No official affiliation is implied unless expressly authorized.
+      </p>
+    </div>
+  </footer>
+
+  <div class="modal" id="productModal">
+    <div class="overlay" onclick="closeModal()"></div>
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal()">×</button>
+      <div class="modal-grid" id="modalGrid"></div>
+    </div>
+  </div>
+
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="overlay" onclick="closeCart()"></div>
+    <aside class="drawer-panel">
+      <div class="drawer-header">
+        <h3>Your Bag</h3>
+        <button class="close-btn" style="position:static;" onclick="closeCart()">×</button>
+      </div>
+
+      <div class="cart-items" id="cartItems"></div>
+
+      <div class="cart-total">
+        <span>Total</span>
+        <span id="cartTotal">$0</span>
+      </div>
+
+      <button class="btn btn-primary" style="width:100%;" onclick="checkout()">Secure Checkout</button>
+    </aside>
+  </div>
+
+  <div class="toast" id="toast">Added to your luxury bag</div>
+
+  <script>
+    const products = [
+      {
+        id: 1,
+        brand: "Chanel",
+        name: "Classic Quilted Evening Bag",
+        category: "Handbags",
+        price: 6400,
+        color: "Black",
+        material: "Leather",
+        style: "Classic",
+        occasion: "Evening",
+        badge: "Iconic",
+        date: 12,
+        image: "https://images.unsplash.com/photo-1594223274512-ad4803739b7c?auto=format&fit=crop&w=900&q=85",
+        description: "A refined quilted silhouette created for elegant dinners, private events, and moments where quiet luxury speaks louder than anything else.",
+        size: "One Size",
+        shipping: "Premium insured shipping with signature confirmation.",
+        quality: "Curated with a quality-first presentation and boutique-level product detail."
+      },
+      {
+        id: 2,
+        brand: "Louis Vuitton",
+        name: "Heritage Monogram Tote",
+        category: "Handbags",
+        price: 2850,
+        color: "Brown",
+        material: "Canvas",
+        style: "Classic",
+        occasion: "Everyday Luxury",
+        badge: "Best Seller",
+        date: 10,
+        image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=900&q=85",
+        description: "A spacious everyday statement piece with heritage-inspired energy, designed for travel, city life, and polished daily presence.",
+        size: "MM",
+        shipping: "Ships in premium protective packaging.",
+        quality: "Quality notes and condition details should be verified before purchase."
+      },
+      {
+        id: 3,
+        brand: "Gucci",
+        name: "Gold Accent Statement Belt",
+        category: "Accessories",
+        price: 720,
+        color: "Gold",
+        material: "Leather",
+        style: "Statement",
+        occasion: "Celebrity Moment",
+        badge: "Signature",
+        date: 8,
+        image: "https://images.unsplash.com/photo-1624222247344-550fb60583dc?auto=format&fit=crop&w=900&q=85",
+        description: "A polished belt designed to transform a minimal outfit into a confident luxury look with immediate status energy.",
+        size: "XS / S / M / L",
+        shipping: "Securely packed with premium presentation.",
+        quality: "Detailed material, hardware, and finish notes available on request."
+      },
+      {
+        id: 4,
+        brand: "Prada",
+        name: "Minimal Black Leather Loafer",
+        category: "Shoes",
+        price: 1190,
+        color: "Black",
+        material: "Leather",
+        style: "Minimal",
+        occasion: "Business",
+        badge: "New Arrival",
+        date: 20,
+        image: "https://images.unsplash.com/photo-1614252369475-531eba835eb1?auto=format&fit=crop&w=900&q=85",
+        description: "A sleek leather loafer for polished days, understated confidence, and a wardrobe that feels expensive without trying too hard.",
+        size: "36 / 37 / 38 / 39 / 40 / 41",
+        shipping: "Ships with protective shoe packaging.",
+        quality: "Premium construction details and fit guidance included."
+      },
+      {
+        id: 5,
+        brand: "Dior",
+        name: "Ivory Silk Resort Scarf",
+        category: "Accessories",
+        price: 520,
+        color: "Ivory",
+        material: "Silk",
+        style: "Editorial",
+        occasion: "Vacation",
+        badge: "Resort",
+        date: 14,
+        image: "https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?auto=format&fit=crop&w=900&q=85",
+        description: "Soft, graceful, and cinematic. A silk scarf that adds resort elegance to handbags, hair, necklines, and editorial travel looks.",
+        size: "90cm x 90cm",
+        shipping: "Flat-packed in refined protective wrapping.",
+        quality: "Silk touch, print quality, and finishing details should be confirmed."
+      },
+      {
+        id: 6,
+        brand: "Saint Laurent",
+        name: "Parisian Black Sunglasses",
+        category: "Sunglasses",
+        price: 460,
+        color: "Black",
+        material: "Acetate",
+        style: "Statement",
+        occasion: "Celebrity Moment",
+        badge: "VIP Mood",
+        date: 18,
+        image: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=900&q=85",
+        description: "Sharp, mysterious, and camera-ready. These sunglasses create instant famous-person energy with a clean black silhouette.",
+        size: "One Size",
+        shipping: "Ships with case-style protective packaging.",
+        quality: "Lens, frame, and fit notes should be reviewed before checkout."
+      },
+      {
+        id: 7,
+        brand: "Balenciaga",
+        name: "Street Luxury Sculpted Sneaker",
+        category: "Shoes",
+        price: 1090,
+        color: "White",
+        material: "Leather",
+        style: "Street Luxury",
+        occasion: "Everyday Luxury",
+        badge: "Drop",
+        date: 22,
+        image: "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=900&q=85",
+        description: "A bold sneaker for luxury streetwear styling, designed for customers who want comfort, attention, and fashion authority.",
+        size: "39 / 40 / 41 / 42 / 43 / 44",
+        shipping: "Ships in reinforced protective packaging.",
+        quality: "Sole, upper, and wear details should be checked before purchase."
+      },
+      {
+        id: 8,
+        brand: "Prada",
+        name: "Champagne Satin Evening Sandal",
+        category: "Sandals",
+        price: 980,
+        color: "Champagne",
+        material: "Suede",
+        style: "Evening",
+        occasion: "Evening",
+        badge: "Elegant",
+        date: 16,
+        image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=900&q=85",
+        description: "A graceful sandal made for evenings, soft lighting, champagne energy, and the feeling of being beautifully noticed.",
+        size: "36 / 37 / 38 / 39 / 40",
+        shipping: "Protected with premium shoe packaging.",
+        quality: "Heel, strap, and surface condition details recommended."
+      },
+      {
+        id: 9,
+        brand: "Gucci",
+        name: "Beige Compact Wallet",
+        category: "Wallets",
+        price: 690,
+        color: "Beige",
+        material: "Leather",
+        style: "Classic",
+        occasion: "Everyday Luxury",
+        badge: "Giftable",
+        date: 7,
+        image: "https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=900&q=85",
+        description: "A compact wallet that makes every small daily gesture feel polished, intentional, and quietly luxurious.",
+        size: "Compact",
+        shipping: "Ships with elegant protective presentation.",
+        quality: "Interior, stitching, and hardware notes should be included."
+      },
+      {
+        id: 10,
+        brand: "Dior",
+        name: "Pearl White Tailored Blazer",
+        category: "Ready to Wear",
+        price: 3200,
+        color: "White",
+        material: "Leather",
+        style: "Editorial",
+        occasion: "Business",
+        badge: "Editorial",
+        date: 19,
+        image: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=900&q=85",
+        description: "A sharp, elegant blazer for boardrooms, dinners, and editorial city moments where confidence needs no explanation.",
+        size: "XS / S / M / L",
+        shipping: "Garment-protected premium shipping.",
+        quality: "Fit, fabric, lining, and tailoring notes should be reviewed."
+      },
+      {
+        id: 11,
+        brand: "Louis Vuitton",
+        name: "Soft Taupe Travel Pouch",
+        category: "Accessories",
+        price: 880,
+        color: "Beige",
+        material: "Canvas",
+        style: "Minimal",
+        occasion: "Vacation",
+        badge: "Travel",
+        date: 11,
+        image: "https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?auto=format&fit=crop&w=900&q=85",
+        description: "A refined travel pouch designed for organized luxury, airport elegance, and elevated daily essentials.",
+        size: "Medium",
+        shipping: "Ships with protective dust-style packaging.",
+        quality: "Zipper, canvas, and edge finishing details should be verified."
+      },
+      {
+        id: 12,
+        brand: "Chanel",
+        name: "Black & Gold Chain Wallet",
+        category: "Wallets",
+        price: 2400,
+        color: "Black",
+        material: "Leather",
+        style: "Evening",
+        occasion: "Evening",
+        badge: "Rare Mood",
+        date: 21,
+        image: "https://images.unsplash.com/photo-1559563458-527698bf5295?auto=format&fit=crop&w=900&q=85",
+        description: "A small but powerful piece with evening elegance, gold detail, and the emotional pull of a private luxury accessory.",
+        size: "Mini",
+        shipping: "Premium insured delivery available.",
+        quality: "Chain, leather, interior, and closure details should be confirmed."
+      }
+    ];
+
+    let cart = [];
+    let activeCategory = "";
+    let activeBrand = "";
+
+    const productGrid = document.getElementById("productGrid");
+    const productCount = document.getElementById("productCount");
+
+    function money(value) {
+      return new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD",
+        maximumFractionDigits: 0
+      }).format(value);
+    }
+
+    function setCatalog(category = "", brand = "") {
+      activeCategory = category;
+      activeBrand = brand;
+
+      const catalog = document.getElementById("catalog");
+      const title = document.getElementById("catalogTitle");
+      const breadcrumb = document.getElementById("catalogBreadcrumb");
+
+      catalog.classList.add("active");
+
+      if (activeCategory && activeBrand) {
+        title.textContent = `${activeBrand} ${activeCategory}`;
+        breadcrumb.textContent = `Catalog / ${activeCategory} / ${activeBrand}`;
+      } else if (activeCategory) {
+        title.textContent = `${activeCategory} Collection`;
+        breadcrumb.textContent = `Catalog / ${activeCategory}`;
+      } else {
+        title.textContent = "The Full Luxury Catalog";
+        breadcrumb.textContent = "Private Catalog";
+      }
+
+      renderProducts();
+      updateActiveChips();
+
+      catalog.scrollIntoView({
+        behavior: "smooth"
+      });
+    }
+
+    function hideCatalog() {
+      document.getElementById("catalog").classList.remove("active");
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }
+
+    function updateActiveChips() {
+      const chips = document.querySelectorAll(".catalog-chips button");
+
+      chips.forEach(chip => {
+        const text = chip.textContent.trim();
+        chip.classList.remove("active");
+
+        if (!activeCategory && text === "All Pieces") {
+          chip.classList.add("active");
+        }
+
+        if (activeCategory && text === activeCategory) {
+          chip.classList.add("active");
+        }
+      });
+    }
+
+    function renderProducts() {
+      const sort = document.getElementById("sortFilter").value;
+
+      let filtered = products.filter(product => {
+        return (
+          (!activeCategory || product.category === activeCategory) &&
+          (!activeBrand || product.brand === activeBrand)
+        );
+      });
+
+      if (sort === "low") {
+        filtered.sort((a, b) => a.price - b.price);
+      }
+
+      if (sort === "high") {
+        filtered.sort((a, b) => b.price - a.price);
+      }
+
+      if (sort === "new") {
+        filtered.sort((a, b) => b.date - a.date);
+      }
+
+      productCount.textContent = `Showing ${filtered.length} curated piece${filtered.length === 1 ? "" : "s"}`;
+
+      if (!filtered.length) {
+        productGrid.innerHTML = `
+          <div class="empty-state" style="grid-column: 1 / -1;">
+            No pieces are currently available in this selection. Explore the full catalog for more luxury items.
+          </div>
+        `;
+        return;
+      }
+
+      productGrid.innerHTML = filtered.map(product => `
+        <article class="product-card">
+          <div class="product-image">
+            <img src="${product.image}" alt="${product.name}">
+            <div class="product-badge">${product.badge}</div>
+            <button class="quick-btn" onclick="openProduct(${product.id})">Quick View</button>
+          </div>
+
+          <div class="product-info">
+            <div class="product-brand">${product.brand}</div>
+            <h3 class="product-name">${product.name}</h3>
+            <p class="product-meta">${product.category} · ${product.material} · ${product.occasion}</p>
+
+            <div class="product-bottom">
+              <div class="price">${money(product.price)}</div>
+              <button class="add-btn" onclick="addToCart(${product.id})">Add to Bag</button>
+            </div>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    function openProduct(id) {
+      const product = products.find(item => item.id === id);
+      const related = products
+        .filter(item => item.id !== id && (item.category === product.category || item.brand === product.brand))
+        .slice(0, 2);
+
+      document.getElementById("modalGrid").innerHTML = `
+        <div class="modal-image">
+          <img src="${product.image}" alt="${product.name}">
+        </div>
+
+        <div class="modal-details">
+          <div class="product-brand">${product.brand}</div>
+          <h2>${product.name}</h2>
+          <div class="modal-price">${money(product.price)}</div>
+
+          <p class="modal-description">${product.description}</p>
+
+          <div class="detail-list">
+            <div><strong>Category</strong><span>${product.category}</span></div>
+            <div><strong>Material</strong><span>${product.material}</span></div>
+            <div><strong>Color</strong><span>${product.color}</span></div>
+            <div><strong>Style</strong><span>${product.style}</span></div>
+            <div><strong>Occasion</strong><span>${product.occasion}</span></div>
+            <div><strong>Shipping</strong><span>${product.shipping}</span></div>
+            <div><strong>Quality Note</strong><span>${product.quality}</span></div>
+          </div>
+
+          <div class="section-kicker">Size Options</div>
+          <div class="size-options">
+            ${product.size.split("/").map((size, index) => `
+              <button class="${index === 0 ? "active" : ""}" onclick="selectSize(this)">${size.trim()}</button>
+            `).join("")}
+          </div>
+
+          <button class="btn btn-primary" style="width:100%;" onclick="addToCart(${product.id})">Add to Luxury Bag</button>
+
+          <div class="related">
+            <h3>Recommended For You</h3>
+            <div class="related-grid">
+              ${related.map(item => `
+                <div class="related-item" onclick="openProduct(${item.id})">
+                  <small>${item.brand}</small>
+                  <p>${item.name}</p>
+                </div>
+              `).join("")}
+            </div>
+          </div>
+        </div>
+      `;
+
+      document.getElementById("productModal").classList.add("active");
+      document.body.classList.add("no-scroll");
+    }
+
+    function closeModal() {
+      document.getElementById("productModal").classList.remove("active");
+      document.body.classList.remove("no-scroll");
+    }
+
+    function selectSize(button) {
+      const siblings = button.parentElement.querySelectorAll("button");
+      siblings.forEach(item => item.classList.remove("active"));
+      button.classList.add("active");
+    }
+
+    function addToCart(id) {
+      const product = products.find(item => item.id === id);
+      const existing = cart.find(item => item.id === id);
+
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ ...product, qty: 1 });
+      }
+
+      updateCart();
+      showToast(`${product.name} added to your luxury bag`);
+    }
+
+    function updateCart() {
+      const count = cart.reduce((sum, item) => sum + item.qty, 0);
+      const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+
+      document.getElementById("cartCount").textContent = count;
+      document.getElementById("cartTotal").textContent = money(total);
+
+      const cartItems = document.getElementById("cartItems");
+
+      if (!cart.length) {
+        cartItems.innerHTML = `
+          <div class="empty-state">
+            Your luxury bag is waiting for its first signature piece.
+          </div>
+        `;
+        return;
+      }
+
+      cartItems.innerHTML = cart.map(item => `
+        <div class="cart-item">
+          <img src="${item.image}" alt="${item.name}">
+          <div>
+            <h4>${item.name}</h4>
+            <p>${money(item.price)} · Qty ${item.qty}</p>
+          </div>
+          <button class="remove-cart" onclick="removeFromCart(${item.id})">×</button>
+        </div>
+      `).join("");
+    }
+
+    function removeFromCart(id) {
+      cart = cart.filter(item => item.id !== id);
+      updateCart();
+    }
+
+    function openCart() {
+      document.getElementById("cartDrawer").classList.add("active");
+      document.body.classList.add("no-scroll");
+    }
+
+    function closeCart() {
+      document.getElementById("cartDrawer").classList.remove("active");
+      document.body.classList.remove("no-scroll");
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.classList.add("active");
+
+      setTimeout(() => {
+        toast.classList.remove("active");
+      }, 2200);
+    }
+
+    function subscribe(event) {
+      event.preventDefault();
+      showToast("You have joined the private luxury drop list");
+      event.target.reset();
+    }
+
+    function checkout() {
+      if (!cart.length) {
+        showToast("Your luxury bag is currently empty");
+        return;
+      }
+
+      showToast("Checkout flow ready to connect with Shopify, Stripe, or WooCommerce");
+    }
+
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape") {
+        closeModal();
+        closeCart();
+      }
+    });
+
+    (function () {
+      const dropdownBtn = document.querySelector(".shop-dropdown-btn");
+      const megaMenu = document.querySelector(".mega-menu");
+      let hideTimer = null;
+
+      function openMenu() {
+        clearTimeout(hideTimer);
+        megaMenu.classList.add("open");
+      }
+
+      function scheduleClose() {
+        clearTimeout(hideTimer);
+        hideTimer = setTimeout(() => megaMenu.classList.remove("open"), 200);
+      }
+
+      dropdownBtn.addEventListener("mouseenter", openMenu);
+      dropdownBtn.addEventListener("mouseleave", scheduleClose);
+      megaMenu.addEventListener("mouseenter", openMenu);
+      megaMenu.addEventListener("mouseleave", scheduleClose);
+    })();
+
+    renderProducts();
+    updateCart();
+    updateActiveChips();
+  </script>
+</body>
+</html>
